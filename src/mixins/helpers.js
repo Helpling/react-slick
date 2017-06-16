@@ -187,6 +187,11 @@ var helpers = {
     }
 
     targetSlide = index;
+
+    if (targetSlide >= this.state.slideCount) {
+      targetSlide = this.state.slideCount - 1;
+    }
+
     if (targetSlide < 0) {
       if(this.props.infinite === false) {
         currentSlide = 0;
@@ -198,6 +203,10 @@ var helpers = {
     } else if (targetSlide >= this.state.slideCount) {
       if(this.props.infinite === false) {
         currentSlide = this.state.slideCount - this.props.slidesToShow;
+
+        if (targetSlide === this.state.slideCount) {
+          currentSlide = currentSlide - 1;
+        }
       } else if (this.state.slideCount % this.props.slidesToScroll !== 0) {
         currentSlide = 0;
       } else {

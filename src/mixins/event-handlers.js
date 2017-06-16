@@ -26,12 +26,14 @@ var EventHandlers = {
       if (this.props.lazyLoad) {
         targetSlide = ((currentSlide + slidesToScroll) % slideCount) + indexOffset;
       }
-    } else if (options.message === 'dots' || options.message === 'children') {
+    } else if (options.message === 'dots') {
       // Click on dots
       targetSlide = options.index * options.slidesToScroll;
       if (targetSlide === options.currentSlide) {
         return;
       }
+    } else if (options.message === 'children') {
+      targetSlide = options.index;
     } else if (options.message === 'index') {
       targetSlide = parseInt(options.index);
       if (targetSlide === options.currentSlide) {
